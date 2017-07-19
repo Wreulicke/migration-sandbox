@@ -4,7 +4,6 @@ import java.util.Hashtable;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
-import java.util.function.Consumer;
 import java.util.stream.Collectors;
 
 import org.eclipse.jdt.core.JavaCore;
@@ -14,11 +13,8 @@ import org.eclipse.jdt.core.dom.ASTParser;
 import org.eclipse.jdt.core.dom.ASTVisitor;
 import org.eclipse.jdt.core.dom.Annotation;
 import org.eclipse.jdt.core.dom.CompilationUnit;
-import org.eclipse.jdt.core.dom.ExpressionStatement;
-import org.eclipse.jdt.core.dom.FieldAccess;
 import org.eclipse.jdt.core.dom.MemberValuePair;
 import org.eclipse.jdt.core.dom.MethodDeclaration;
-import org.eclipse.jdt.core.dom.MethodInvocation;
 import org.eclipse.jdt.core.dom.NormalAnnotation;
 import org.eclipse.jface.text.BadLocationException;
 import org.eclipse.jface.text.Document;
@@ -60,19 +56,6 @@ public class CodemodTest {
 		node.accept(new ASTVisitor() {
 			@Override
 			public boolean visit(MethodDeclaration node) {
-				Consumer<MethodDeclaration> addLogging = d -> {
-					MethodInvocation invocation = ast.newMethodInvocation();
-					ExpressionStatement e = ast.newExpressionStatement(invocation);
-					FieldAccess access = ast.newFieldAccess();
-					access.setName(ast.newSimpleName("out"));
-					access.setExpression(ast.newSimpleName("System"));
-					invocation.setExpression(access);
-					invocation.setName(ast.newSimpleName("println"));
-					List<Object> list = d.getBody().statements();
-					list.add(e);
-				};
-				addLogging.accept(node);
-				addLogging.accept(node);
 				Object e = node.modifiers().get(0);
 				if (e instanceof NormalAnnotation) {
 					List<MemberValuePair> values = ((NormalAnnotation) e).values();
