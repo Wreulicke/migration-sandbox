@@ -19,6 +19,4 @@ dependencies {
 	
 	api 'fr.inria.gforge.spoon:spoon-core:5.8.0'
 	
-	    
 }
-
