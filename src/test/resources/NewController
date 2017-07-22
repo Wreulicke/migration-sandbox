@@ -1,0 +1,87 @@
+
+import org.springframework.http.MediaType;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.PatchMapping;
+
+public class OldController {
+	
+	@GetMapping
+	public String getWithoutPath() {
+		return "get";
+	}
+	
+	@GetMapping("get")
+	public String get() {
+		return "get";
+	}
+	
+	@GetMapping(produces = MediaType.APPLICATION_JSON_VALUE, value = "get")
+	public String getWithPathByValue() {
+		return "get";
+	}
+	
+	@PostMapping
+	public String postWithoutPath() {
+		return "post";
+	}
+	
+	@PostMapping("post")
+	public String post() {
+		return "post";
+	}
+	
+	@PostMapping(produces = MediaType.APPLICATION_JSON_VALUE, value = "post")
+	public String postWithPathByValue() {
+		return "post";
+	}
+	
+	@DeleteMapping
+	public String deleteWithoutPath() {
+		return "delete";
+	}
+	
+	@DeleteMapping("delete")
+	public String delete() {
+		return "delete";
+	}
+	
+	@DeleteMapping(produces = MediaType.APPLICATION_JSON_VALUE, value = "delete")
+	public String deleteWithPathByValue() {
+		return "delete";
+	}
+	
+	@PutMapping
+	public String putWithoutPath() {
+		return "put";
+	}
+	
+	@PutMapping("put")
+	public String put() {
+		return "put";
+	}
+	
+	@PutMapping(produces = MediaType.APPLICATION_JSON_VALUE, value = "put")
+	public String putWithPathByValue() {
+		return "put";
+	}
+	
+	@PatchMapping
+	public String patchWithoutPath() {
+		return "patch";
+	}
+	
+	@PatchMapping("patch")
+	public String patch() {
+		return "patch";
+	}
+	
+	@PatchMapping(produces = MediaType.APPLICATION_JSON_VALUE, value = "patch")
+	public String patchWithPathByValue() {
+		return "patch";
+	}
+}
